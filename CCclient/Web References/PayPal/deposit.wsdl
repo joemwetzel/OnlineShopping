@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Deposit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DepositDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="DepositAmount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DepositResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DepositResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DepositSoapIn">
+    <wsdl:part name="parameters" element="tns:Deposit" />
+  </wsdl:message>
+  <wsdl:message name="DepositSoapOut">
+    <wsdl:part name="parameters" element="tns:DepositResponse" />
+  </wsdl:message>
+  <wsdl:message name="DepositHttpGetIn">
+    <wsdl:part name="MerchantID" type="s:string" />
+    <wsdl:part name="CardType" type="s:string" />
+    <wsdl:part name="CardNumber" type="s:string" />
+    <wsdl:part name="DepositDate" type="s:string" />
+    <wsdl:part name="DepositAmount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DepositHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DepositHttpPostIn">
+    <wsdl:part name="MerchantID" type="s:string" />
+    <wsdl:part name="CardType" type="s:string" />
+    <wsdl:part name="CardNumber" type="s:string" />
+    <wsdl:part name="DepositDate" type="s:string" />
+    <wsdl:part name="DepositAmount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DepositHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="MerchantServiceSoap">
+    <wsdl:operation name="Deposit">
+      <wsdl:input message="tns:DepositSoapIn" />
+      <wsdl:output message="tns:DepositSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MerchantServiceHttpGet">
+    <wsdl:operation name="Deposit">
+      <wsdl:input message="tns:DepositHttpGetIn" />
+      <wsdl:output message="tns:DepositHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="MerchantServiceHttpPost">
+    <wsdl:operation name="Deposit">
+      <wsdl:input message="tns:DepositHttpPostIn" />
+      <wsdl:output message="tns:DepositHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MerchantServiceSoap" type="tns:MerchantServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Deposit">
+      <soap:operation soapAction="http://tempuri.org/Deposit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MerchantServiceSoap12" type="tns:MerchantServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Deposit">
+      <soap12:operation soapAction="http://tempuri.org/Deposit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MerchantServiceHttpGet" type="tns:MerchantServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Deposit">
+      <http:operation location="/Deposit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MerchantServiceHttpPost" type="tns:MerchantServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Deposit">
+      <http:operation location="/Deposit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MerchantService">
+    <wsdl:port name="MerchantServiceSoap" binding="tns:MerchantServiceSoap">
+      <soap:address location="http://itweb.fvtc.edu/MerchantService/deposit.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MerchantServiceSoap12" binding="tns:MerchantServiceSoap12">
+      <soap12:address location="http://itweb.fvtc.edu/MerchantService/deposit.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MerchantServiceHttpGet" binding="tns:MerchantServiceHttpGet">
+      <http:address location="http://itweb.fvtc.edu/MerchantService/deposit.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MerchantServiceHttpPost" binding="tns:MerchantServiceHttpPost">
+      <http:address location="http://itweb.fvtc.edu/MerchantService/deposit.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

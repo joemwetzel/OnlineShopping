@@ -1,0 +1,10 @@
+C:\Users\wetzel\Desktop\CCclient\CCclient\bin\Debug\CCclient.exe
+C:\Users\wetzel\Desktop\CCclient\CCclient\bin\Debug\CCclient.pdb
+C:\Users\wetzel\Desktop\CCclient\CCclient\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\wetzel\Desktop\CCclient\CCclient\obj\x86\Debug\CCclient.Form1.resources
+C:\Users\wetzel\Desktop\CCclient\CCclient\obj\x86\Debug\CCclient.Properties.Resources.resources
+C:\Users\wetzel\Desktop\CCclient\CCclient\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\wetzel\Desktop\CCclient\CCclient\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\wetzel\Desktop\CCclient\CCclient\obj\x86\Debug\CCclient.exe
+C:\Users\wetzel\Desktop\CCclient\CCclient\obj\x86\Debug\CCclient.pdb
+C:\Users\wetzel\Desktop\CCclient\CCclient\bin\Debug\CCclient.exe.config

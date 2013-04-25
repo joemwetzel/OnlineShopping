@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CCclient.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CCclient_PayPal_MerchantService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://itweb.fvtc.edu/MerchantService/deposit.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
